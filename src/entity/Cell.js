@@ -225,34 +225,7 @@ Cell.prototype.calcMovePhys = function (config) {
       var x1 = this.position.x + (totTravel * sin) + xd;
       var y1 = this.position.y + (totTravel * cos) + yd;
       if (this.gameServer) {
-        this.gameServer.getEjectedNodes().forEach((cell)=> {
-          if (this.nodeId == cell.getId()) return;
-          if (!this.simpleCollide(x1, y1, cell, collisionDist)) return;
 
-          var dist = this.getDist(x1, y1, cell.position.x, cell.position.y);
-          if (dist < collisionDist) { // Collided
-            var newDeltaY = cell.position.y - y1;
-            var newDeltaX = cell.position.x - x1;
-            var newAngle = Math.atan2(newDeltaX, newDeltaY);
-            var move = (collisionDist - dist + 5) / 2; //move cells each halfway until they touch
-            let xmove = move * Math.sin(newAngle);
-            let ymove = move * Math.cos(newAngle);
-            cell.position.x += xmove >> 0;
-            cell.position.y += ymove >> 0;
-            xd += -xmove;
-            yd += -ymove;
-            if (cell.moveEngineTicks == 0) {
-              cell.setMoveEngineData(0, 1); //make sure a collided cell checks again for collisions with other cells
-              this.gameServer.getWorld().setNodeAsMoving(cell.getId(), cell);
-              //if (!this.gameServer.getMovingNodes().has(cell.getId())) {
-              //  this.gameServer.setAsMovingNode(cell.getId());
-              //}
-            } 
-            if (this.moveEngineTicks == 0) {
-              this.setMoveEngineData(0, 1); //make sure a collided cell checks again for collisions with other cells
-            }
-          }
-        });
       }
     }
 
