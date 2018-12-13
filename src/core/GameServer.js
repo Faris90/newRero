@@ -740,7 +740,13 @@ beforeq(player) {
   }
 
   getRandomColor() {
-    return utilities.getRandomColor();
+    var index = Math.floor(Math.random() * this.colors.length);
+    var color = this.colors[index];
+    return {
+        r: color.r,
+        b: color.b,
+        g: color.g
+    };
   }
 
   // todo change this out for a vector library
