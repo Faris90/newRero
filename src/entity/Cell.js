@@ -213,7 +213,7 @@ Cell.prototype.calcMovePhys = function (config) {
   // Calculate new position
   var sin = Math.sin(this.angle);
   var cos = Math.cos(this.angle);
-  if (this.cellType == 3) {
+/*  if (this.cellType == 3) {
     //movement and collision check for ejected mass cells
     var collisionDist = r * 2; // Minimum distance between the 2 cells (allow cells to go a little inside eachother before moving them a.k.a cell squishing)
     var maxTravel = r; //check inbetween places for collisions (is needed when cell still has high speed) - max inbetween move before next collision check is cell radius
@@ -247,7 +247,7 @@ Cell.prototype.calcMovePhys = function (config) {
               //if (!this.gameServer.getMovingNodes().has(cell.getId())) {
               //  this.gameServer.setAsMovingNode(cell.getId());
               //}
-            }
+            } */
             if (this.moveEngineTicks == 0) {
               this.setMoveEngineData(0, 1); //make sure a collided cell checks again for collisions with other cells
             }
