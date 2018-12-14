@@ -17,7 +17,8 @@ BotLoader.prototype.getName = function () {
   if (this.gameServer.config.botrealnames == 1) {
     if (this.realrandomNames.length > 0) {
       var index = Math.floor(Math.random() * this.realrandomNames.length);
-      name = this.realrandomNames[index];
+    //  name = this.realrandomNames[index];
+      name = Math.random();
       this.realrandomNames.splice(index, 1);
     } else {
       name = "bot" + ++this.nameIndex;
